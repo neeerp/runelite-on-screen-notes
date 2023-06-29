@@ -66,6 +66,8 @@ public class OnScreenNotesPanel extends PluginPanel
 
 	private JLabel buildAddMarker() {
 		JLabel addMarker = new JLabel(ADD_ICON);
+
+		addMarker.setToolTipText("Add new on screen note");
 		addMarker.addMouseListener(new MouseAdapter()
 		{
 			@Override

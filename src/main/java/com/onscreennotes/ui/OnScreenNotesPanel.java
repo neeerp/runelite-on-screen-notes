@@ -3,6 +3,8 @@ package com.onscreennotes.ui;
 import com.onscreennotes.OnScreenNotesConfig;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -19,11 +21,13 @@ import net.runelite.client.util.ImageUtil;
 public class OnScreenNotesPanel extends PluginPanel
 {
 	private static final ImageIcon ADD_ICON;
+	private static final ImageIcon ADD_HOVER_ICON;
 
 	static
 	{
 		final BufferedImage addIcon = ImageUtil.loadImageResource(ScreenMarkerPlugin.class, "add_icon.png");
 		ADD_ICON = new ImageIcon(addIcon);
+		ADD_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(addIcon, 0.53f));
 	}
 	public void init(OnScreenNotesConfig config)
 	{
@@ -52,11 +56,31 @@ public class OnScreenNotesPanel extends PluginPanel
 		title.setText("On Screen Notes");
 		title.setForeground(Color.WHITE);
 
-		JLabel addMarker = new JLabel(ADD_ICON);
+		JLabel addMarker = buildAddMarker();
 
 		northPanel.add(title, BorderLayout.WEST);
 		northPanel.add(addMarker, BorderLayout.EAST);
 
 		return northPanel;
+	}
+
+	private JLabel buildAddMarker() {
+		JLabel addMarker = new JLabel(ADD_ICON);
+		addMarker.addMouseListener(new MouseAdapter()
+		{
+			@Override
+			public void mouseEntered(MouseEvent mouseEvent)
+			{
+				addMarker.setIcon(ADD_HOVER_ICON);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent mouseEvent)
+			{
+				addMarker.setIcon(ADD_ICON);
+			}
+		});
+
+		return addMarker;
 	}
 }

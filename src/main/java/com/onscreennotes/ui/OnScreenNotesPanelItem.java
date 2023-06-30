@@ -26,6 +26,7 @@ public class OnScreenNotesPanelItem extends JPanel
 		namePanel.setBorder(NAME_BOTTOM_BORDER);
 
 		nameInput.setText("My Note");
+		nameInput.setEditable(false);
 
 		namePanel.add(nameInput, BorderLayout.CENTER);
 

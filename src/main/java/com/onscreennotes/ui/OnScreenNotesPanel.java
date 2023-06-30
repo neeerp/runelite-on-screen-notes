@@ -95,6 +95,9 @@ public class OnScreenNotesPanel extends PluginPanel
 		constraints.gridx = 0;
 		constraints.gridy = 0;
 
+		notesView.add(new OnScreenNotesPanelItem());
+		constraints.gridy++;
+
 		PluginErrorPanel noNotesPanel = new PluginErrorPanel();
 		noNotesPanel.setContent("On Screen Notes", "Write notes on your screen.");
 		noNotesPanel.setVisible(true);

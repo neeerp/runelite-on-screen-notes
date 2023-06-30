@@ -103,15 +103,20 @@ public class OnScreenNotesPanel extends PluginPanel
 		notesView.add(Box.createRigidArea(new Dimension(0, 10)), constraints);
 		constraints.gridy++;
 
-		PluginErrorPanel noNotesPanel = new PluginErrorPanel();
-		noNotesPanel.setContent("On Screen Notes", "Write notes on your screen.");
-		noNotesPanel.setVisible(true);
-
-		notesView.add(noNotesPanel, constraints);
+		JPanel noNotesFooter = buildNoNotesFooter();
+		notesView.add(noNotesFooter, constraints);
 		constraints.gridy++;
 
 		centerPanel.add(notesView, BorderLayout.CENTER);
 
 		return centerPanel;
+	}
+
+	public JPanel buildNoNotesFooter() {
+		PluginErrorPanel noNotesFooter = new PluginErrorPanel();
+		noNotesFooter.setContent("On Screen Notes", "Write notes on your screen.");
+		noNotesFooter.setVisible(true);
+
+		return noNotesFooter;
 	}
 }

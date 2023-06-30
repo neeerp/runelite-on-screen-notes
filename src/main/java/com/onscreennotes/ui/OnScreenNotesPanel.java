@@ -3,6 +3,8 @@ package com.onscreennotes.ui;
 import com.onscreennotes.OnScreenNotesConfig;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -15,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.plugins.screenmarkers.ScreenMarkerPlugin;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.PluginPanel;
+import net.runelite.client.ui.components.PluginErrorPanel;
 import net.runelite.client.util.ImageUtil;
 
 @Slf4j
@@ -37,15 +40,8 @@ public class OnScreenNotesPanel extends PluginPanel
 		JPanel northPanel = buildNorthPanel();
 		add(northPanel, BorderLayout.NORTH);
 
-		setBackground(ColorScheme.BRAND_ORANGE);
-
-		JPanel notesContainer = new JPanel();
-		notesContainer.setLayout(new BorderLayout());
-		notesContainer.setBackground(ColorScheme.GRAND_EXCHANGE_LIMIT);
-
-		notesContainer.setBorder(new EmptyBorder(10, 10, 10, 10));
-
-		add(notesContainer, BorderLayout.CENTER);
+		JPanel centerPanel = buildCenterPanel();
+		add(centerPanel, BorderLayout.CENTER);
 	}
 
 	private JPanel buildNorthPanel() {
@@ -84,5 +80,30 @@ public class OnScreenNotesPanel extends PluginPanel
 		});
 
 		return addMarker;
+	}
+
+	private JPanel buildCenterPanel() {
+		JPanel centerPanel = new JPanel(new BorderLayout());
+
+		JPanel notesView = new JPanel(new GridBagLayout());
+		notesView.setBackground(ColorScheme.DARK_GRAY_COLOR);
+
+
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.weightx = 1;
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+
+		PluginErrorPanel noNotesPanel = new PluginErrorPanel();
+		noNotesPanel.setContent("On Screen Notes", "Write notes on your screen.");
+		noNotesPanel.setVisible(true);
+
+		notesView.add(noNotesPanel, constraints);
+		constraints.gridy++;
+
+		centerPanel.add(notesView, BorderLayout.CENTER);
+
+		return centerPanel;
 	}
 }

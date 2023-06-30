@@ -3,12 +3,14 @@ package com.onscreennotes.ui;
 import com.onscreennotes.OnScreenNotesConfig;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -95,7 +97,10 @@ public class OnScreenNotesPanel extends PluginPanel
 		constraints.gridx = 0;
 		constraints.gridy = 0;
 
-		notesView.add(new OnScreenNotesPanelItem());
+		notesView.add(new OnScreenNotesPanelItem(), constraints);
+		constraints.gridy++;
+
+		notesView.add(Box.createRigidArea(new Dimension(0, 10)), constraints);
 		constraints.gridy++;
 
 		PluginErrorPanel noNotesPanel = new PluginErrorPanel();

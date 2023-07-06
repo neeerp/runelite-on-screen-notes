@@ -79,31 +79,7 @@ public class OnScreenNotesPluginPanel extends PluginPanel
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 
 		JPanel northPanel = buildNorthPanel();
-
-		JPanel centerPanel = new JPanel(new BorderLayout());
-		centerPanel.setBackground(ColorScheme.DARK_GRAY_COLOR);
-
-		markerView.setBackground(ColorScheme.DARK_GRAY_COLOR);
-
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.fill = GridBagConstraints.HORIZONTAL;
-		constraints.weightx = 1;
-		constraints.gridx = 0;
-		constraints.gridy = 0;
-
-		noMarkersPanel.setContent("No Notes Saved!", "Get started by creating a new note!");
-		noMarkersPanel.setVisible(false);
-
-		markerView.add(noMarkersPanel, constraints);
-		constraints.gridy++;
-
-		creationPanel = new OnScreenNotesCreationPanel(plugin);
-		creationPanel.setVisible(false);
-
-		markerView.add(creationPanel, constraints);
-		constraints.gridy++;
-
-		centerPanel.add(markerView, BorderLayout.CENTER);
+		JPanel centerPanel = buildCenterPanel();
 
 		add(northPanel, BorderLayout.NORTH);
 		add(centerPanel, BorderLayout.CENTER);
@@ -149,6 +125,32 @@ public class OnScreenNotesPluginPanel extends PluginPanel
 
 		return addMarker;
 	}
+
+	private JPanel buildCenterPanel() {
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.weightx = 1;
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+
+		noMarkersPanel.setContent("On Screen Notes", "Write notes on your screen.");
+		noMarkersPanel.setVisible(true);
+		markerView.add(noMarkersPanel, constraints);
+		constraints.gridy++;
+
+		creationPanel = new OnScreenNotesCreationPanel(plugin);
+		creationPanel.setVisible(false);
+		markerView.add(creationPanel, constraints);
+		constraints.gridy++;
+
+		markerView.setBackground(ColorScheme.DARK_GRAY_COLOR);
+
+		JPanel centerPanel = new JPanel(new BorderLayout());
+		centerPanel.add(markerView, BorderLayout.CENTER);
+
+		return centerPanel;
+	}
+
 
 	public void rebuild()
 	{

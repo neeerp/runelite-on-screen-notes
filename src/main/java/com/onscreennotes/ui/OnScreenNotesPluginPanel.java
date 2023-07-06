@@ -127,21 +127,10 @@ public class OnScreenNotesPluginPanel extends PluginPanel
 	}
 
 	private JPanel buildCenterPanel() {
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.fill = GridBagConstraints.HORIZONTAL;
-		constraints.weightx = 1;
-		constraints.gridx = 0;
-		constraints.gridy = 0;
-
 		noMarkersPanel.setContent("On Screen Notes", "Write notes on your screen.");
-		noMarkersPanel.setVisible(true);
-		markerView.add(noMarkersPanel, constraints);
-		constraints.gridy++;
 
 		creationPanel = new OnScreenNotesCreationPanel(plugin);
 		creationPanel.setVisible(false);
-		markerView.add(creationPanel, constraints);
-		constraints.gridy++;
 
 		markerView.setBackground(ColorScheme.DARK_GRAY_COLOR);
 
@@ -151,9 +140,14 @@ public class OnScreenNotesPluginPanel extends PluginPanel
 		return centerPanel;
 	}
 
-
 	public void rebuild()
 	{
+		repopulateMarkers();
+		repaint();
+		revalidate();
+	}
+
+	private void repopulateMarkers() {
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.weightx = 1;
@@ -180,9 +174,6 @@ public class OnScreenNotesPluginPanel extends PluginPanel
 
 		markerView.add(creationPanel, constraints);
 		constraints.gridy++;
-
-		repaint();
-		revalidate();
 	}
 
 	/* Enables/Disables new marker creation mode */

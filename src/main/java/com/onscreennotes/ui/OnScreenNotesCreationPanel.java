@@ -54,8 +54,8 @@ public class OnScreenNotesCreationPanel extends JPanel
 
 	static
 	{
-		CONFIRM_ICON = new ImageIcon(ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "add_icon.png"));
-		CANCEL_ICON = new ImageIcon(ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "add_icon.png"));
+		CONFIRM_ICON = new ImageIcon(ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "confirm_icon.png"));
+		CANCEL_ICON = new ImageIcon(ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "cancel_icon.png"));
 
 		final BufferedImage confirmIcon = ImageUtil.bufferedImageFromImage(CONFIRM_ICON.getImage());
 		CONFIRM_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(confirmIcon, 0.54f));

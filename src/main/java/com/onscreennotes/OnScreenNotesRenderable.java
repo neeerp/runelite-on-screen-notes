@@ -26,6 +26,7 @@ package com.onscreennotes;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import lombok.AccessLevel;
@@ -65,6 +66,15 @@ class OnScreenNotesRenderable implements RenderableEntity
 		if (!label.isEmpty())
 		{
 			graphics.drawString(label, 0, 0);
+			graphics.setFont(new Font("Purisa", Font.PLAIN, 13));
+
+			graphics.drawString("Most relationships seem so transitory", 20, 30);
+			graphics.drawString("They're all good but not the permanent one", 20, 60);
+			graphics.drawString("Who doesn't long for someone to hold", 20, 90);
+			graphics.drawString("Who knows how to love you without being told", 20, 120);
+			graphics.drawString("Somebody tell me why I'm on my own", 20, 150);
+			graphics.drawString("If there's a soulmate for everyone", 20, 180);
+
 		}
 
 		return size;

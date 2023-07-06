@@ -49,6 +49,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import com.onscreennotes.OnScreenNotesOverlay;
 import com.onscreennotes.OnScreenNotesPlugin;
+import net.runelite.client.plugins.screenmarkers.ScreenMarkerPlugin;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.components.FlatTextField;
@@ -109,7 +110,7 @@ class OnScreenNotesPanel extends JPanel
 
 	static
 	{
-		final BufferedImage borderImg = ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "add_icon.png");
+		final BufferedImage borderImg = ImageUtil.loadImageResource(ScreenMarkerPlugin.class, "border_color_icon.png");
 		final BufferedImage borderImgHover = ImageUtil.luminanceOffset(borderImg, -150);
 		BORDER_COLOR_ICON = new ImageIcon(borderImg);
 		BORDER_COLOR_HOVER_ICON = new ImageIcon(borderImgHover);
@@ -117,7 +118,7 @@ class OnScreenNotesPanel extends JPanel
 		NO_BORDER_COLOR_ICON = new ImageIcon(borderImgHover);
 		NO_BORDER_COLOR_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(borderImgHover, -100));
 
-		final BufferedImage fillImg = ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "add_icon.png");
+		final BufferedImage fillImg = ImageUtil.loadImageResource(ScreenMarkerPlugin.class, "fill_color_icon.png");
 		final BufferedImage fillImgHover = ImageUtil.luminanceOffset(fillImg, -150);
 		FILL_COLOR_ICON = new ImageIcon(fillImg);
 		FILL_COLOR_HOVER_ICON = new ImageIcon(fillImgHover);
@@ -125,7 +126,7 @@ class OnScreenNotesPanel extends JPanel
 		NO_FILL_COLOR_ICON = new ImageIcon(fillImgHover);
 		NO_FILL_COLOR_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(fillImgHover, -100));
 
-		final BufferedImage labelImg = ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "add_icon.png");
+		final BufferedImage labelImg = ImageUtil.loadImageResource(ScreenMarkerPlugin.class, "label_icon.png");
 		final BufferedImage labelImgHover = ImageUtil.luminanceOffset(labelImg, -150);
 		LABEL_ICON = new ImageIcon(labelImg);
 		LABEL_HOVER_ICON = new ImageIcon(labelImgHover);
@@ -133,15 +134,15 @@ class OnScreenNotesPanel extends JPanel
 		NO_LABEL_ICON = new ImageIcon(labelImgHover);
 		NO_LABEL_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(labelImgHover, -100));
 
-		final BufferedImage visibleImg = ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "add_icon.png");
+		final BufferedImage visibleImg = ImageUtil.loadImageResource(ScreenMarkerPlugin.class, "visible_icon.png");
 		VISIBLE_ICON = new ImageIcon(visibleImg);
 		VISIBLE_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(visibleImg, -100));
 
-		final BufferedImage invisibleImg = ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "add_icon.png");
+		final BufferedImage invisibleImg = ImageUtil.loadImageResource(ScreenMarkerPlugin.class, "invisible_icon.png");
 		INVISIBLE_ICON = new ImageIcon(invisibleImg);
 		INVISIBLE_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(invisibleImg, -100));
 
-		final BufferedImage deleteImg = ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "add_icon.png");
+		final BufferedImage deleteImg = ImageUtil.loadImageResource(ScreenMarkerPlugin.class, "delete_icon.png");
 		DELETE_ICON = new ImageIcon(deleteImg);
 		DELETE_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(deleteImg, -100));
 	}

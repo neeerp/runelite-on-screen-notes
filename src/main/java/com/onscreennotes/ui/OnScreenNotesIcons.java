@@ -8,22 +8,6 @@ import net.runelite.client.util.ImageUtil;
 
 public class OnScreenNotesIcons
 {
-	public static final ImageIcon CONFIRM_ICON;
-	public static final ImageIcon CONFIRM_HOVER_ICON;
-	public static final ImageIcon CONFIRM_LOCKED_ICON;
-	public static final ImageIcon CANCEL_ICON;
-	public static final ImageIcon CANCEL_HOVER_ICON;
-
-	static {
-		CONFIRM_ICON = new ImageIcon(ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "confirm_icon.png"));
-		CANCEL_ICON = new ImageIcon(ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "cancel_icon.png"));
-
-		final BufferedImage confirmIcon = ImageUtil.bufferedImageFromImage(CONFIRM_ICON.getImage());
-		CONFIRM_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(confirmIcon, 0.54f));
-		CONFIRM_LOCKED_ICON = new ImageIcon(ImageUtil.grayscaleImage(confirmIcon));
-		CANCEL_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(ImageUtil.bufferedImageFromImage(CANCEL_ICON.getImage()), 0.6f));
-	}
-
 	public static final ImageIcon BORDER_COLOR_ICON;
 	public static final ImageIcon BORDER_COLOR_HOVER_ICON;
 	public static final ImageIcon NO_BORDER_COLOR_ICON;
@@ -46,6 +30,12 @@ public class OnScreenNotesIcons
 
 	public static final ImageIcon DELETE_ICON;
 	public static final ImageIcon DELETE_HOVER_ICON;
+
+	public static final ImageIcon CONFIRM_ICON;
+	public static final ImageIcon CONFIRM_HOVER_ICON;
+	public static final ImageIcon CONFIRM_LOCKED_ICON;
+	public static final ImageIcon CANCEL_ICON;
+	public static final ImageIcon CANCEL_HOVER_ICON;
 
 	static
 	{
@@ -84,5 +74,13 @@ public class OnScreenNotesIcons
 		final BufferedImage deleteImg = ImageUtil.loadImageResource(ScreenMarkerPlugin.class, "delete_icon.png");
 		DELETE_ICON = new ImageIcon(deleteImg);
 		DELETE_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(deleteImg, -100));
+
+		CONFIRM_ICON = new ImageIcon(ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "confirm_icon.png"));
+		CANCEL_ICON = new ImageIcon(ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "cancel_icon.png"));
+
+		final BufferedImage confirmIcon = ImageUtil.bufferedImageFromImage(CONFIRM_ICON.getImage());
+		CONFIRM_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(confirmIcon, 0.54f));
+		CONFIRM_LOCKED_ICON = new ImageIcon(ImageUtil.grayscaleImage(confirmIcon));
+		CANCEL_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(ImageUtil.bufferedImageFromImage(CANCEL_ICON.getImage()), 0.6f));
 	}
 }

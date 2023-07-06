@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import net.runelite.client.plugins.screenmarkers.ScreenMarkerPlugin;
 import net.runelite.client.util.ImageUtil;
 
-public class OnScreenNotesElements
+public class OnScreenNotesIcons
 {
 	public static final ImageIcon CONFIRM_ICON;
 	public static final ImageIcon CONFIRM_HOVER_ICON;

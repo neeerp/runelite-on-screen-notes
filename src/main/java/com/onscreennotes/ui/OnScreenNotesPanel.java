@@ -25,7 +25,7 @@
  */
 package com.onscreennotes.ui;
 
-import static com.onscreennotes.ui.OnScreenNotesElements.*;
+import static com.onscreennotes.ui.OnScreenNotesIcons.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

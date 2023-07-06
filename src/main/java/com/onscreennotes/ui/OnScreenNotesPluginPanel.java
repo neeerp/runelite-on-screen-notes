@@ -25,6 +25,8 @@
  */
 package com.onscreennotes.ui;
 
+import static com.onscreennotes.ui.OnScreenNotesIcons.ADD_HOVER_ICON;
+import static com.onscreennotes.ui.OnScreenNotesIcons.ADD_ICON;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,9 +34,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import javax.swing.Box;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -44,13 +44,9 @@ import com.onscreennotes.OnScreenNotesPlugin;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.PluginErrorPanel;
-import net.runelite.client.util.ImageUtil;
 
 public class OnScreenNotesPluginPanel extends PluginPanel
 {
-	private static final ImageIcon ADD_ICON;
-	private static final ImageIcon ADD_HOVER_ICON;
-
 	private static final Color DEFAULT_BORDER_COLOR = Color.GREEN;
 	private static final Color DEFAULT_FILL_COLOR = new Color(0, 255, 0, 0);
 
@@ -74,13 +70,6 @@ public class OnScreenNotesPluginPanel extends PluginPanel
 
 	@Getter
 	private OnScreenNotesCreationPanel creationPanel;
-
-	static
-	{
-		final BufferedImage addIcon = ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "add_icon.png");
-		ADD_ICON = new ImageIcon(addIcon);
-		ADD_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(addIcon, 0.53f));
-	}
 
 	public OnScreenNotesPluginPanel(OnScreenNotesPlugin screenMarkerPlugin)
 	{

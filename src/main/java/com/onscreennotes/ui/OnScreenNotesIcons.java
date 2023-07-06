@@ -8,6 +8,9 @@ import net.runelite.client.util.ImageUtil;
 
 public class OnScreenNotesIcons
 {
+	public static final ImageIcon ADD_ICON;
+	public static final ImageIcon ADD_HOVER_ICON;
+
 	public static final ImageIcon BORDER_COLOR_ICON;
 	public static final ImageIcon BORDER_COLOR_HOVER_ICON;
 	public static final ImageIcon NO_BORDER_COLOR_ICON;
@@ -39,6 +42,10 @@ public class OnScreenNotesIcons
 
 	static
 	{
+		final BufferedImage addIcon = ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "add_icon.png");
+		ADD_ICON = new ImageIcon(addIcon);
+		ADD_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(addIcon, 0.53f));
+
 		final BufferedImage borderImg = ImageUtil.loadImageResource(ScreenMarkerPlugin.class, "border_color_icon.png");
 		final BufferedImage borderImgHover = ImageUtil.luminanceOffset(borderImg, -150);
 		BORDER_COLOR_ICON = new ImageIcon(borderImg);

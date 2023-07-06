@@ -29,8 +29,6 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -38,30 +36,13 @@ import com.onscreennotes.OnScreenNotesPlugin;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.components.shadowlabel.JShadowedLabel;
-import net.runelite.client.util.ImageUtil;
 
 public class OnScreenNotesCreationPanel extends JPanel
 {
-	private static final ImageIcon CONFIRM_ICON;
-	private static final ImageIcon CONFIRM_HOVER_ICON;
-	private static final ImageIcon CONFIRM_LOCKED_ICON;
-	private static final ImageIcon CANCEL_ICON;
-	private static final ImageIcon CANCEL_HOVER_ICON;
-
 	private final JShadowedLabel instructionsLabel = new JShadowedLabel();
 	private final JLabel confirmLabel = new JLabel();
 	private boolean lockedConfirm = true;
 
-	static
-	{
-		CONFIRM_ICON = new ImageIcon(ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "confirm_icon.png"));
-		CANCEL_ICON = new ImageIcon(ImageUtil.loadImageResource(OnScreenNotesPlugin.class, "cancel_icon.png"));
-
-		final BufferedImage confirmIcon = ImageUtil.bufferedImageFromImage(CONFIRM_ICON.getImage());
-		CONFIRM_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(confirmIcon, 0.54f));
-		CONFIRM_LOCKED_ICON = new ImageIcon(ImageUtil.grayscaleImage(confirmIcon));
-		CANCEL_HOVER_ICON = new ImageIcon(ImageUtil.alphaOffset(ImageUtil.bufferedImageFromImage(CANCEL_ICON.getImage()), 0.6f));
-	}
 
 	OnScreenNotesCreationPanel(OnScreenNotesPlugin plugin)
 	{
@@ -75,7 +56,7 @@ public class OnScreenNotesCreationPanel extends JPanel
 		JPanel actionsContainer = new JPanel(new GridLayout(1, 2, 8, 0));
 		actionsContainer.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 
-		confirmLabel.setIcon(CONFIRM_LOCKED_ICON);
+		confirmLabel.setIcon(OnScreenNotesElements.CONFIRM_LOCKED_ICON);
 		confirmLabel.setToolTipText("Confirm and save");
 		confirmLabel.addMouseListener(new MouseAdapter()
 		{
@@ -92,17 +73,17 @@ public class OnScreenNotesCreationPanel extends JPanel
 			@Override
 			public void mouseEntered(MouseEvent mouseEvent)
 			{
-				confirmLabel.setIcon(lockedConfirm ? CONFIRM_LOCKED_ICON : CONFIRM_HOVER_ICON);
+				confirmLabel.setIcon(lockedConfirm ? OnScreenNotesElements.CONFIRM_LOCKED_ICON : OnScreenNotesElements.CONFIRM_HOVER_ICON);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent mouseEvent)
 			{
-				confirmLabel.setIcon(lockedConfirm ? CONFIRM_LOCKED_ICON : CONFIRM_ICON);
+				confirmLabel.setIcon(lockedConfirm ? OnScreenNotesElements.CONFIRM_LOCKED_ICON : OnScreenNotesElements.CONFIRM_ICON);
 			}
 		});
 
-		JLabel cancelLabel = new JLabel(CANCEL_ICON);
+		JLabel cancelLabel = new JLabel(OnScreenNotesElements.CANCEL_ICON);
 		cancelLabel.setToolTipText("Cancel");
 		cancelLabel.addMouseListener(new MouseAdapter()
 		{
@@ -115,13 +96,13 @@ public class OnScreenNotesCreationPanel extends JPanel
 			@Override
 			public void mouseEntered(MouseEvent mouseEvent)
 			{
-				cancelLabel.setIcon(CANCEL_HOVER_ICON);
+				cancelLabel.setIcon(OnScreenNotesElements.CANCEL_HOVER_ICON);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent mouseEvent)
 			{
-				cancelLabel.setIcon(CANCEL_ICON);
+				cancelLabel.setIcon(OnScreenNotesElements.CANCEL_ICON);
 			}
 		});
 
@@ -135,7 +116,7 @@ public class OnScreenNotesCreationPanel extends JPanel
 	/* Unlocks the confirm button */
 	public void unlockConfirm()
 	{
-		this.confirmLabel.setIcon(CONFIRM_ICON);
+		this.confirmLabel.setIcon(OnScreenNotesElements.CONFIRM_ICON);
 		this.lockedConfirm = false;
 		instructionsLabel.setText("Confirm or cancel to finish.");
 	}
@@ -143,7 +124,7 @@ public class OnScreenNotesCreationPanel extends JPanel
 	/* Locks the confirm button */
 	public void lockConfirm()
 	{
-		this.confirmLabel.setIcon(CONFIRM_LOCKED_ICON);
+		this.confirmLabel.setIcon(OnScreenNotesElements.CONFIRM_LOCKED_ICON);
 		this.lockedConfirm = true;
 		instructionsLabel.setText("Drag in-game to draw");
 	}

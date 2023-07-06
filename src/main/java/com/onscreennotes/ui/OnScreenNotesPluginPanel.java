@@ -109,7 +109,7 @@ public class OnScreenNotesPluginPanel extends PluginPanel
 		constraints.gridx = 0;
 		constraints.gridy = 0;
 
-		noMarkersPanel.setContent("Screen Markers", "Highlight a region on your screen.");
+		noMarkersPanel.setContent("No Notes Saved!", "Get started by creating a new note!");
 		noMarkersPanel.setVisible(false);
 
 		markerView.add(noMarkersPanel, constraints);

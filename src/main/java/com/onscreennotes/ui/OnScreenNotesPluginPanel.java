@@ -78,14 +78,7 @@ public class OnScreenNotesPluginPanel extends PluginPanel
 		setLayout(new BorderLayout());
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 
-		JPanel northPanel = new JPanel(new BorderLayout());
-		northPanel.setBorder(new EmptyBorder(1, 0, 10, 0));
-
-		title.setText("Screen Markers");
-		title.setForeground(Color.WHITE);
-
-		northPanel.add(title, BorderLayout.WEST);
-		northPanel.add(addMarker, BorderLayout.EAST);
+		JPanel northPanel = buildNorthPanel();
 
 		JPanel centerPanel = new JPanel(new BorderLayout());
 		centerPanel.setBackground(ColorScheme.DARK_GRAY_COLOR);
@@ -110,7 +103,29 @@ public class OnScreenNotesPluginPanel extends PluginPanel
 		markerView.add(creationPanel, constraints);
 		constraints.gridy++;
 
-		addMarker.setToolTipText("Add new screen marker");
+		centerPanel.add(markerView, BorderLayout.CENTER);
+
+		add(northPanel, BorderLayout.NORTH);
+		add(centerPanel, BorderLayout.CENTER);
+	}
+
+	private JPanel buildNorthPanel() {
+		JPanel northPanel = new JPanel(new BorderLayout());
+		northPanel.setBorder(new EmptyBorder(1, 0, 10, 0));
+
+		title.setText("On Screen Notes");
+		title.setForeground(Color.WHITE);
+
+		JLabel addMarker = buildAddMarker();
+
+		northPanel.add(title, BorderLayout.WEST);
+		northPanel.add(addMarker, BorderLayout.EAST);
+
+		return northPanel;
+	}
+
+	private JLabel buildAddMarker() {
+		addMarker.setToolTipText("Add new on screen note");
 		addMarker.addMouseListener(new MouseAdapter()
 		{
 			@Override
@@ -132,10 +147,7 @@ public class OnScreenNotesPluginPanel extends PluginPanel
 			}
 		});
 
-		centerPanel.add(markerView, BorderLayout.CENTER);
-
-		add(northPanel, BorderLayout.NORTH);
-		add(centerPanel, BorderLayout.CENTER);
+		return addMarker;
 	}
 
 	public void rebuild()

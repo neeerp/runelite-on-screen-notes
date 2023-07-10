@@ -29,6 +29,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
+import java.awt.font.FontRenderContext;
+import java.awt.font.LineBreakMeasurer;
+import java.awt.font.TextAttribute;
+import java.awt.font.TextLayout;
+import java.text.AttributedString;
+import java.util.Map;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -65,16 +71,23 @@ class OnScreenNotesRenderable implements RenderableEntity
 
 		if (!label.isEmpty())
 		{
-			graphics.drawString(label, 0, 0);
-			graphics.setFont(new Font("Purisa", Font.PLAIN, 13));
+			// TODO: This works! Next, let's clean this up and add a way to edit and save the string per marker.
 
-			graphics.drawString("Most relationships seem so transitory", 20, 30);
-			graphics.drawString("They're all good but not the permanent one", 20, 60);
-			graphics.drawString("Who doesn't long for someone to hold", 20, 90);
-			graphics.drawString("Who knows how to love you without being told", 20, 120);
-			graphics.drawString("Somebody tell me why I'm on my own", 20, 150);
-			graphics.drawString("If there's a soulmate for everyone", 20, 180);
+			String lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+			AttributedString as = new AttributedString(lorem, Map.of(TextAttribute.FONT, new Font(Font.SANS_SERIF, Font.PLAIN, 15)));
 
+			FontRenderContext frc = graphics.getFontRenderContext();
+			LineBreakMeasurer lbm = new LineBreakMeasurer(as.getIterator(), frc);
+
+
+			float wrappingWidth = width;
+			int dy = 0;
+			while (lbm.getPosition() < as.getIterator().getEndIndex()) {
+				TextLayout layout = lbm.nextLayout(wrappingWidth);
+				dy += layout.getAscent();
+				layout.draw(graphics, 0, dy);
+				dy += layout.getDescent() + layout.getLeading();
+			}
 		}
 
 		return size;
